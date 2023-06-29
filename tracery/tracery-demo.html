@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracery</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: darkslategray;
+        }
+
+        #divDisplayText {
+            font-size: 3em;
+            text-align: center;
+            padding-top: 15%;
+            color:lightgreen;
+            font-family: sans-serif;
+            text-shadow: 0px 5px 10px black;
+        }
+    </style>
+    <script src="/scripts/tracery.js"></script>
+    <script>
+        async function testGrammar() {
+            let fileObject = await fetch("demo.json");
+            let fileText = await fileObject.text();
+            let grammar = tracery.createGrammar(JSON.parse(fileText));
+            
+            console.log(grammar);
+            document.getElementById("divDisplayText").innerHTML = grammar.flatten("#origin#");
+        }
+
+        testGrammar();
+    </script>
+
+    <div id="divDisplayText">
+
+    </div>
+</body>
+</html>
