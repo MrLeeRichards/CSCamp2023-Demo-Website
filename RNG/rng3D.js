@@ -20,7 +20,7 @@ function setup() {
 
 function draw() {
     for (let i = 0; i < 1000; i++) {
-        plot2D(multiNoise3D(seed, x * .05, y * .05));
+        plot2D(simpleNoise3D(seed, x, y));
     }
 }
 
